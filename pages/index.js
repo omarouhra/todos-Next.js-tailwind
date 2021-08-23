@@ -62,10 +62,10 @@ export default function Home() {
       ) : (
         <p></p>
       )}
-      <main className='flex flex-col h-screen items-center justify-center p-7 '>
+      <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7 '>
         <form className=' w-full flex items-start space-x-3'>
           <input
-            className=' w-full border-b-2 border-black  mb-12 focus:outline-none text-sm lg:text-3xl '
+            className=' w-full  border-b-2 border-black  mb-12 focus:outline-none text-sm lg:text-3xl '
             type='text'
             value={inputText}
             placeholder='Do it today, TODAY! ....'

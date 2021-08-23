@@ -22,7 +22,7 @@ function Todo({ todo, todos, setTodos }) {
   };
 
   return (
-    <div className='flex justify-between items-center p-8 mb-3 animate-fade-in  group hover:shadow-xl transition duration-600 border rounded-md hover:border-transparent'>
+    <div className='flex justify-between items-center p-3 mb-3 md:p-5 xl:p-8 animate-fade-in  group hover:shadow-xl transition duration-600 border rounded-md hover:border-transparent'>
       <p
         className={
           todo.isCompleted
