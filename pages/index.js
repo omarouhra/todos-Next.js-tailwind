@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import Todo from "../components/Todo";
+import MetaTags from "react-meta-tags";
 
 export default function Home() {
   useEffect(() => {
@@ -50,6 +51,9 @@ export default function Home() {
         <title>Do it Today!</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
+      
+
+
 
       {todos.length > 0 ? (
         <div className='flex items-center justify-center w-7 h-7 absolute top-3 right-3  bg-black rounded-full animate-fade-in lg:right-1/4'>
