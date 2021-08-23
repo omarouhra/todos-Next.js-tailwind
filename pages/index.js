@@ -16,7 +16,7 @@ export default function Home() {
   const submitForm = e => {
     e.preventDefault();
 
-    if (inputText !== "") {
+    if (inputText.trim()) {
       setTodos([
         ...todos,
         {
@@ -30,9 +30,7 @@ export default function Home() {
     setInputText("");
   };
 
-  const completed = () => {
-    console.log("completed");
-  };
+  const completedHandler = () => {};
 
   return (
     <div className='flex flex-col realtive min-h-screen py-2 md:max-w-2xl md:m-auto '>
@@ -60,7 +58,13 @@ export default function Home() {
         </form>
         <section className=' h-2/3  w-full overflow-auto'>
           {todos.map(todo => (
-            <Todo key={todo.id} todo={todo.text} />
+            <Todo
+              key={todo.id}
+              todo={todo}
+              completedHandler={completedHandler}
+              todos={todos}
+              setTodos={setTodos}
+            />
           ))}
         </section>
       </main>

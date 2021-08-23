@@ -1,22 +1,22 @@
 import { CheckCircleIcon, TrashIcon } from "@heroicons/react/outline";
 
-function Todo({ todo, completed }) {
+function Todo({ todo, todos, setTodos }) {
+  const deleteHandler = () => {
+    setTodos(todos.filter(el => el.id !== todo.id));
+  };
+
   return (
     <div className='flex justify-between items-center p-8 mb-3 animate-fade-in  group hover:shadow-xl transition duration-600 border rounded-md hover:border-transparent'>
-      <p
-        className={
-          todo.id
-            ? "font-semibold text-md text-green-500"
-            : "font-semibold text-md "
-        }>
-        {todo}
-      </p>
+      <p className='font-semibold text-md text-green-500'>{todo.text}</p>
       <div className='flex space-x-2 '>
-        <TrashIcon className=' hidden w-6 text-red-500 group-hover:inline-flex  ' />
+        <TrashIcon
+          className=' hidden w-6 text-red-500 group-hover:inline-flex'
+          onClick={deleteHandler}
+        />
 
         <CheckCircleIcon
-          className={todo.id ? "  w-6 text-green-500  " : "w-6 "}
-          onClick={completed}
+          className={todo.isCompleted ? "  w-6 text-green-500  " : "w-6 "}
+          onClick={() => {}}
         />
       </div>
     </div>
