@@ -59,15 +59,20 @@ export default function Home() {
         <p></p>
       )}
       <main className='flex flex-col h-screen items-center justify-center p-7 '>
-        <form className=' w-full '>
+        <form className=' w-full flex items-start space-x-3'>
           <input
-            className=' w-full border-b-2 border-black  mb-12 focus:outline-none text-xl lg:text-3xl '
+            className=' w-full border-b-2 border-black  mb-12 focus:outline-none text-sm lg:text-3xl '
             type='text'
             value={inputText}
             placeholder='Do it today, TODAY! ....'
             onChange={inputTextHandler}
           />
-          <button hidden type='submit' onClick={submitForm}></button>
+          <button
+            className=' w-8 h-8    border md:text-xl md:w-12 md:h-12 hover:bg-black hover:text-white transition duration-400 active:scale-90 hover:shadow-xl'
+            type='submit'
+            onClick={submitForm}>
+            +
+          </button>
         </form>
         <section className=' h-2/3  w-full overflow-auto'>
           {todos.map(todo => (

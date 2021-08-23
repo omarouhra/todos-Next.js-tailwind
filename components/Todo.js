@@ -33,12 +33,16 @@ function Todo({ todo, todos, setTodos }) {
       </p>
       <div className='flex space-x-2 '>
         <TrashIcon
-          className=' hidden w-6 text-red-500 group-hover:inline-flex'
+          className=' hidden w-6 text-red-500 group-hover:inline-flex cursor-pointer'
           onClick={deleteHandler}
         />
 
         <CheckCircleIcon
-          className={todo.isCompleted ? "  w-6 text-green-500  " : "w-6 "}
+          className={
+            todo.isCompleted
+              ? "  w-6 text-green-500 cursor-pointer   "
+              : "w-6 cursor-pointer"
+          }
           onClick={completedHandler}
         />
       </div>
