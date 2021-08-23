@@ -30,7 +30,6 @@ export default function Home() {
     setInputText("");
   };
 
-  const completedHandler = () => {};
 
   return (
     <div className='flex flex-col realtive min-h-screen py-2 md:max-w-2xl md:m-auto '>
@@ -61,7 +60,6 @@ export default function Home() {
             <Todo
               key={todo.id}
               todo={todo}
-              completedHandler={completedHandler}
               todos={todos}
               setTodos={setTodos}
             />
