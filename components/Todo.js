@@ -1,4 +1,5 @@
 import { CheckCircleIcon, TrashIcon } from "@heroicons/react/outline";
+import { useState } from "react";
 
 function Todo({ todo, todos, setTodos }) {
   const deleteHandler = () => {
