@@ -72,7 +72,7 @@ export default function Home() {
         <p></p>
       )}
       <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7 '>
-        <div className='mb-12 w-full'>
+        <div className='mb-12 w-full animate-fade-in'>
           <p className='text-sm font-semibold'>{quote.content}</p>
           <small className='text-gray-400'>{quote.author}</small>
         </div>
