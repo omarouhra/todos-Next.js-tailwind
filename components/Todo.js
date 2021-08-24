@@ -1,7 +1,7 @@
 import { CheckCircleIcon, TrashIcon } from "@heroicons/react/outline";
 import { useState } from "react";
 
-function Todo({ todo, todos, setTodos }) {
+function Todo({ todo, todos, setTodos, id }) {
   const deleteHandler = () => {
     setTodos(todos.filter(el => el.id !== todo.id));
   };
