@@ -6,12 +6,14 @@ import MetaTags from "react-meta-tags";
 export default function Home() {
   useEffect(() => {
     getLocalTodos();
+    getQuote();
   }, []);
   useEffect(() => {
     saveLocalTodos();
   });
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
+  const [quote, setQuote] = useState("");
 
   const inputTextHandler = e => {
     setInputText(e.target.value);
@@ -45,15 +47,22 @@ export default function Home() {
     }
   };
 
+  // fetch quote from api
+
+  const getQuote = async () => {
+    const quote = await fetch("https://api.quotable.io/random")
+      .then(res => res.json())
+      .then(res => setQuote(res))
+      .catch(err => console.log(err));
+    return quote;
+  };
+
   return (
     <div className='flex flex-col realtive min-h-screen py-2 md:max-w-2xl md:m-auto '>
       <Head>
         <title>Do it Today!</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      
-
-
 
       {todos.length > 0 ? (
         <div className='flex items-center justify-center w-7 h-7 absolute top-3 right-3  bg-black rounded-full animate-fade-in lg:right-1/4'>
@@ -63,9 +72,13 @@ export default function Home() {
         <p></p>
       )}
       <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7 '>
+        <div className='mb-12 w-full'>
+          <p className='text-sm font-semibold'>{quote.content}</p>
+          <small className='text-gray-400'>{quote.author}</small>
+        </div>
         <form className=' w-full flex items-start space-x-3'>
           <input
-            className=' w-full  border-b-2 border-black  mb-12 focus:outline-none text-sm lg:text-3xl '
+            className=' w-full py-2 border-b-2 border-black  mb-12 focus:outline-none text-sm lg:text-3xl '
             type='text'
             value={inputText}
             placeholder='Do it today, TODAY! ....'
