@@ -64,13 +64,13 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      {todos.length > 0 ? (
-        <div className='flex items-center justify-center w-7 h-7 absolute top-3 right-3  bg-black rounded-full animate-fade-in lg:right-1/4'>
+      {/* {todos.length > 0 ? (
+        <div className='flex items-center justify-center w-7 h-7 absolute top-2 right-3  bg-black rounded-full animate-fade-in lg:right-1/4'>
           <p className=' text-white '>{todos.length}</p>
         </div>
       ) : (
         <p></p>
-      )}
+      )} */}
       <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7 '>
         <div className='mb-12 w-full animate-fade-in'>
           <p className='text-sm font-semibold'>{quote.content}</p>
