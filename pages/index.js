@@ -1,7 +1,7 @@
 import { ArrowNarrowRightIcon } from "@heroicons/react/outline";
 import Head from "next/head";
 import { useState, useEffect, useRef } from "react";
-import Spalsh from "../components/Spalsh";
+
 import Todo from "../components/Todo";
 export default function Home() {
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function Home() {
   }, []);
   useEffect(() => {
     saveLocalTodos();
-    saveLocalUserName();
+    // saveLocalUserName();
   });
   const userNameRef = useRef("");
 
@@ -25,8 +25,12 @@ export default function Home() {
   };
   const userNameHandler = e => {
     e.preventDefault();
-    setUserName(userNameRef.current.value.trim().toLocaleUpperCase());
-    console.log(userName);
+
+    const form = document.querySelector("#userNameForm");
+    form.classList.add("animate-fade-out");
+    setTimeout(() => {
+      setUserName(userNameRef.current.value.trim().toLocaleUpperCase());
+    }, 800);
   };
 
   const submitForm = e => {
@@ -67,7 +71,6 @@ export default function Home() {
   };
 
   // fetch quote from api
-
   const getQuote = async () => {
     const quote = await fetch("https://api.quotable.io/random")
       .then(res => res.json())
@@ -119,7 +122,9 @@ export default function Home() {
           </section>
         </main>
       ) : (
-        <form className='flex space-x-4 items-center justify-center h-screen w-full '>
+        <form
+          id='userNameForm'
+          className='flex space-x-4 items-center justify-center h-screen w-full '>
           <input
             type='text'
             ref={userNameRef}
@@ -128,10 +133,7 @@ export default function Home() {
           />
 
           <button onClick={userNameHandler} type='submit'>
-            <ArrowNarrowRightIcon
-              className='h-9 animate-bounce mt-5 p-1 hover:bg-black hover:text-white hover:shadow-xl hover:rounded-full transition-all duration-900'
-              onClick={userNameHandler}
-            />
+            <ArrowNarrowRightIcon className=' h-9 animate-bounce mt-5 p-1 hover:bg-black hover:text-white hover:shadow-xl hover:rounded-full transition-all duration-900' />
           </button>
         </form>
       )}

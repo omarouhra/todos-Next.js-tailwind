@@ -15,9 +15,20 @@ module.exports = {
             transform: "translateY(0)",
           },
         },
+        "fade-out": {
+          "0%": {
+            opacity: "1",
+            transform: "translateY(0px)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translateY(10)",
+          },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.8s ease-out",
+        "fade-out": "fade-out 0.8s ease-out",
       },
     },
   },
