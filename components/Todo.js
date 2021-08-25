@@ -1,13 +1,13 @@
 import { CheckCircleIcon, TrashIcon } from "@heroicons/react/outline";
 
-function Todo({ todo, todos, setTodos, id }) {
+function Todo({ todo, todos, setTodos }) {
   const deleteHandler = () => {
     const todoContainer = document.querySelector("#todoContainer");
-    todoContainer.classList.add("");
-    console.log(todoContainer.classList);
+    todoContainer.classList.remove("animate-fade-in");
+    todoContainer.classList.add("animate-fade-out");
     setTimeout(() => {
       setTodos(todos.filter(el => el.id !== todo.id));
-    }, 800);
+    }, 500);
   };
 
   const completedHandler = () => {
