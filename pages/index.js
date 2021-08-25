@@ -8,12 +8,17 @@ export default function Home() {
     getLocalTodos();
     getQuote();
     getLocalUserName();
+
+    if (userName) {
+      userNameRef.current.focus();
+    }
   }, []);
   useEffect(() => {
     saveLocalTodos();
-    // saveLocalUserName();
+    saveLocalUserName();
   });
   const userNameRef = useRef("");
+  const todoRef = useRef("");
 
   const [inputText, setInputText] = useState("");
   const [todos, setTodos] = useState([]);
@@ -97,9 +102,11 @@ export default function Home() {
           </div>
           <form className=' w-full flex items-start space-x-3'>
             <input
+              autoFocus
               className=' w-full py-2 border-b-2 border-black  mb-12 focus:outline-none text-sm lg:text-3xl '
               type='text'
               value={inputText}
+              ref={todoRef}
               placeholder='Do it today, TODAY! ....'
               onChange={inputTextHandler}
             />
