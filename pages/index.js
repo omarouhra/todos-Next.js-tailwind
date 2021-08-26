@@ -132,7 +132,7 @@ export default function Home() {
           <MoonIcon className='w-4 text-gray-400 dark:text-white' />
         </div>
         {userName ? (
-          <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7 mt-4'>
+          <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7 mt-12'>
             <p className='w-full mb-8 text-xl dark:text-white'>
               Welcome Back{" "}
               <span className='font-bold'>{userName.toLocaleUpperCase()}</span>{" "}
