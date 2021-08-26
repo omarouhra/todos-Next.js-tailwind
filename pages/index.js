@@ -141,10 +141,10 @@ export default function Home() {
               <p className='text-sm font-semibold'>{quote.content}</p>
               <small className='text-gray-400'>{quote.author}</small>
             </div>
-            <form className=' w-full flex items-start space-x-3'>
+            <form className=' w-full flex items-start space-x-3 border-b-2 border-black dark:border-white'>
               <input
                 autoFocus
-                className=' w-full py-2 border-b-2 border-black bg-transparent  mb-12 focus:outline-none text-sm lg:text-3xl dark:border-white dark:text-white '
+                className=' w-full py-2  bg-transparent  mb-4 focus:outline-none text-sm lg:text-3xl  dark:text-white '
                 type='text'
                 value={inputText}
                 ref={todoRef}
