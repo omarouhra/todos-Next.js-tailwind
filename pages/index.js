@@ -12,6 +12,7 @@ export default function Home() {
     getLocalTodos();
     getQuote();
     getLocalUserName();
+    // getLocalThemeChoice();
 
     if (!userName) {
       userNameRef.current.focus();
@@ -20,6 +21,7 @@ export default function Home() {
   useEffect(() => {
     saveLocalTodos();
     saveLocalUserName();
+    // saveThemChoice();
   });
   const userNameRef = useRef("");
   const todoRef = useRef("");
@@ -64,6 +66,9 @@ export default function Home() {
   const saveLocalUserName = () => {
     localStorage.setItem("userName", JSON.stringify(userName));
   };
+  // const saveThemChoice = () => {
+  //   localStorage.setItem("theme", JSON.stringify(isSwitched));
+  // };
 
   const getLocalTodos = () => {
     if (localStorage.getItem("todos") === null) {
@@ -77,8 +82,13 @@ export default function Home() {
   const getLocalUserName = () => {
     let localStorageUserName = JSON.parse(localStorage.getItem("userName"));
     setUserName(localStorageUserName);
-    console.log(localStorageUserName);
   };
+
+  // const getLocalThemeChoice = () => {
+  //   let localStorageThemeChoice = JSON.parse(localStorage.getItem("theme"));
+  //   setIsSwitched(localStorageThemeChoice);
+  //   console.log(isSwitched);
+  // };
 
   // fetch quote from api
   const getQuote = async () => {
@@ -93,7 +103,6 @@ export default function Home() {
   const [isSwitched, setIsSwitched] = useState(false);
 
   const swither = () => {
-    setIsSwitched(!isSwitched);
     const toggle = document.querySelector("#switchTheme");
     const page = document.querySelector("html");
     if (isSwitched) {
@@ -103,6 +112,7 @@ export default function Home() {
       toggle.classList.remove("translate-x-3");
       page.classList.remove("dark");
     }
+    setIsSwitched(!isSwitched);
   };
 
   return (
@@ -112,19 +122,17 @@ export default function Home() {
           <title>Do it Today!</title>
           <link rel='icon' href='/favicon.ico' />
         </Head>
-        <button
-          className='flex items-center space-x-2 absolute top-3 right-4'
-          onClick={swither}>
+        <div className='flex items-center space-x-2 absolute top-3 right-4'>
           <SunIcon className='w-4 text-gray-800 dark:text-gray-600 ' />
-          <div className='w-9 h-5 bg-gray-300 rounded-full flex items-center px-1 dark:bg-white '>
-            <div
-              id='switchTheme'
-              className='w-4 h-4 bg-white shadow-xl rounded-full transform duration-200 dark:bg-gray-300'></div>
-          </div>
+          <button
+            className='w-9 h-5 bg-gray-300 rounded-full flex items-center px-1 dark:bg-white '
+            onClick={swither}>
+            <div id='switchTheme' className='swithDot'></div>
+          </button>
           <MoonIcon className='w-4 text-gray-400 dark:text-white' />
-        </button>
+        </div>
         {userName ? (
-          <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7'>
+          <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7 mt-4'>
             <p className='w-full mb-8 text-xl dark:text-white'>
               Welcome Back{" "}
               <span className='font-bold'>{userName.toLocaleUpperCase()}</span>{" "}
