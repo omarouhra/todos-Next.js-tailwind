@@ -1,4 +1,8 @@
-import { ArrowNarrowRightIcon } from "@heroicons/react/outline";
+import {
+  ArrowNarrowRightIcon,
+  MoonIcon,
+  SunIcon,
+} from "@heroicons/react/outline";
 import Head from "next/head";
 import { useState, useEffect, useRef } from "react";
 
@@ -9,7 +13,7 @@ export default function Home() {
     getQuote();
     getLocalUserName();
 
-    if (userName) {
+    if (!userName) {
       userNameRef.current.focus();
     }
   }, []);
@@ -33,6 +37,7 @@ export default function Home() {
 
     const form = document.querySelector("#userNameForm");
     form.classList.add("animate-fade-out");
+
     setTimeout(() => {
       setUserName(userNameRef.current.value.trim().toLocaleUpperCase());
     }, 800);
@@ -84,66 +89,95 @@ export default function Home() {
     return quote;
   };
 
+  // theme swither
+  const [isSwitched, setIsSwitched] = useState(false);
+
+  const swither = () => {
+    setIsSwitched(!isSwitched);
+    const toggle = document.querySelector("#switchTheme");
+    const page = document.querySelector("html");
+    if (isSwitched) {
+      toggle.classList.add("translate-x-3");
+      page.classList.add("dark");
+    } else {
+      toggle.classList.remove("translate-x-3");
+      page.classList.remove("dark");
+    }
+  };
+
   return (
-    <div className='flex flex-col realtive min-h-screen py-2 md:max-w-3xl md:m-auto '>
-      <Head>
-        <title>Do it Today!</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      {userName ? (
-        <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7 '>
-          <p className='w-full mb-24 text-xl'>
-            Welcome Back{" "}
-            <span className='font-bold'>{userName.toLocaleUpperCase()}</span>{" "}
-          </p>
-          <div className='mb-12 w-full animate-fade-in'>
-            <p className='text-sm font-semibold'>{quote.content}</p>
-            <small className='text-gray-400'>{quote.author}</small>
+    <div className='relative dark:bg-gray-900 transition duration-1000'>
+      <section className='flex flex-col  realtive min-h-screen py-2 md:max-w-3xl md:m-auto  '>
+        <Head>
+          <title>Do it Today!</title>
+          <link rel='icon' href='/favicon.ico' />
+        </Head>
+        <button
+          className='flex items-center space-x-2 absolute top-3 right-4'
+          onClick={swither}>
+          <SunIcon className='w-4 text-gray-800 dark:text-gray-600 ' />
+          <div className='w-9 h-5 bg-gray-300 rounded-full flex items-center px-1 dark:bg-white '>
+            <div
+              id='switchTheme'
+              className='w-4 h-4 bg-white shadow-xl rounded-full transform duration-200 dark:bg-gray-300'></div>
           </div>
-          <form className=' w-full flex items-start space-x-3'>
+          <MoonIcon className='w-4 text-gray-400 dark:text-white' />
+        </button>
+        {userName ? (
+          <main className='flex flex-col h-screen items-center justify-center p-2 md:p-7'>
+            <p className='w-full mb-8 text-xl dark:text-white'>
+              Welcome Back{" "}
+              <span className='font-bold'>{userName.toLocaleUpperCase()}</span>{" "}
+            </p>
+            <div className='mb-12 w-full animate-fade-in dark:text-white'>
+              <p className='text-sm font-semibold'>{quote.content}</p>
+              <small className='text-gray-400'>{quote.author}</small>
+            </div>
+            <form className=' w-full flex items-start space-x-3'>
+              <input
+                autoFocus
+                className=' w-full py-2 border-b-2 border-black bg-transparent  mb-12 focus:outline-none text-sm lg:text-3xl dark:border-white dark:text-white '
+                type='text'
+                value={inputText}
+                ref={todoRef}
+                placeholder='Do it today, TODAY! ....'
+                onChange={inputTextHandler}
+              />
+              <button
+                className=' w-8 h-8    border md:text-xl md:w-12 md:h-12 hover:bg-black hover:text-white transition duration-400 active:scale-90 hover:shadow-xl  dark:bg-white dark:hover:bg-transparent'
+                type='submit'
+                onClick={submitForm}>
+                +
+              </button>
+            </form>
+            <section className=' h-2/3  w-full overflow-auto'>
+              {todos.map(todo => (
+                <Todo
+                  key={todo.id}
+                  todo={todo}
+                  todos={todos}
+                  setTodos={setTodos}
+                />
+              ))}
+            </section>
+          </main>
+        ) : (
+          <form
+            id='userNameForm'
+            className='flex space-x-4 items-center justify-center h-screen w-full dark:text-white'>
             <input
-              autoFocus
-              className=' w-full py-2 border-b-2 border-black  mb-12 focus:outline-none text-sm lg:text-3xl '
               type='text'
-              value={inputText}
-              ref={todoRef}
-              placeholder='Do it today, TODAY! ....'
-              onChange={inputTextHandler}
+              ref={userNameRef}
+              className='text-2xl md:text-4xl outline-none border-b-2 bg-transparent border-black py-2 dark:border-white'
+              placeholder='YOUR NAME PLEASE!'
             />
-            <button
-              className=' w-8 h-8    border md:text-xl md:w-12 md:h-12 hover:bg-black hover:text-white transition duration-400 active:scale-90 hover:shadow-xl'
-              type='submit'
-              onClick={submitForm}>
-              +
+
+            <button onClick={userNameHandler} type='submit'>
+              <ArrowNarrowRightIcon className=' h-9 animate-bounce mt-5 p-1 hover:bg-black hover:text-white hover:shadow-xl rounded-full transition-all duration-900 dark:hover:bg-white dark:hover:text-black' />
             </button>
           </form>
-          <section className=' h-2/3  w-full overflow-auto'>
-            {todos.map(todo => (
-              <Todo
-                key={todo.id}
-                todo={todo}
-                todos={todos}
-                setTodos={setTodos}
-              />
-            ))}
-          </section>
-        </main>
-      ) : (
-        <form
-          id='userNameForm'
-          className='flex space-x-4 items-center justify-center h-screen w-full '>
-          <input
-            type='text'
-            ref={userNameRef}
-            className='text-2xl md:text-4xl outline-none border-b-2 border-black py-2 '
-            placeholder='YOUR NAME PLEASE!'
-          />
-
-          <button onClick={userNameHandler} type='submit'>
-            <ArrowNarrowRightIcon className=' h-9 animate-bounce mt-5 p-1 hover:bg-black hover:text-white hover:shadow-xl hover:rounded-full transition-all duration-900' />
-          </button>
-        </form>
-      )}
+        )}
+      </section>
     </div>
   );
 }

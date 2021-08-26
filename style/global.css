@@ -1,0 +1,6 @@
+@tailwind components;
+@tailwind base;
+
+.swithToggle {
+  @apply w-4 h-4 bg-white shadow-xl rounded-full transform duration-300;
+}
