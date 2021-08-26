@@ -186,10 +186,10 @@ export default function Home() {
           </form>
         )}
       </section>
-      <footer className='hidden absolute bottom-5 right-4 md:inline text-xs bg-gray-900 text-white dark:bg-white dark:text-black px-4 py-1 rounded-full shadow-2xl'>
+      <footer className='hidden absolute bottom-5 right-4 md:inline text-xs bg-gray-900 text-white dark:bg-white dark:text-black px-4 py-1 rounded shadow-2xl cursor-pointer'>
         <p >
           created by{" "}
-          <a href='https://www.instagram.com/omar.code/' className='font-bold '>
+          <a target="_blank" href='https://www.instagram.com/omar.code/' className='font-bold '>
             @Omar.Code
           </a>
         </p>
