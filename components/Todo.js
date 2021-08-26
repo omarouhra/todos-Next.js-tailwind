@@ -28,7 +28,7 @@ function Todo({ todo, todos, setTodos }) {
   return (
     <div
       id='todoContainer'
-      className='flex justify-between items-center p-3 mb-3 md:p-5 xl:p-8 border border-gray-200 animate-fade-in  group hover:shadow-xl transition duration-200  rounded-md hover:border-transparent dark:text-white dark:shadow-2xl  dark:border-transparent '>
+      className='flex justify-between items-center p-2 sm:p-3 mb-3 md:p-5 xl:p-8 border border-gray-200 animate-fade-in  group hover:shadow-xl transition duration-200  rounded-md hover:border-transparent dark:text-white dark:shadow-2xl  dark:border-transparent '>
       <p
         className={
           todo.isCompleted
