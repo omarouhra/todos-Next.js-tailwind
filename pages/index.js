@@ -122,7 +122,7 @@ export default function Home() {
           <title>Do it Today!</title>
           <link rel='icon' href='/favicon.ico' />
         </Head>
-        <div className='flex items-center space-x-2 absolute top-3 left-1   '>
+        <div className='flex items-center space-x-2 absolute top-3 left-2  '>
           <SunIcon className='w-4 text-gray-800 dark:text-gray-600 ' />
           <button
             className='w-9 h-5 bg-gray-300 rounded-full flex items-center px-1 dark:bg-white '
@@ -141,10 +141,10 @@ export default function Home() {
               <p className='text-sm font-semibold'>{quote.content}</p>
               <small className='text-gray-400'>{quote.author}</small>
             </div>
-            <form className=' w-full flex items-start space-x-3 border-b-2 border-black dark:border-white'>
+            <form className=' w-full flex items-start space-x-3 mb-12 border-b-2 dark:border-white '>
               <input
                 autoFocus
-                className=' w-full py-2  bg-transparent  mb-4 focus:outline-none text-sm lg:text-3xl  dark:text-white '
+                className=' w-full py-2  bg-transparent mb-2  focus:outline-none text-sm lg:text-3xl  dark:text-white '
                 type='text'
                 value={inputText}
                 ref={todoRef}
