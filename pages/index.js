@@ -122,7 +122,7 @@ export default function Home() {
           <title>Do it Today!</title>
           <link rel='icon' href='/favicon.ico' />
         </Head>
-        <div className='flex items-center space-x-2 absolute top-3 right-4'>
+        <div className='flex items-center space-x-2 absolute top-3 left-1   '>
           <SunIcon className='w-4 text-gray-800 dark:text-gray-600 ' />
           <button
             className='w-9 h-5 bg-gray-300 rounded-full flex items-center px-1 dark:bg-white '
