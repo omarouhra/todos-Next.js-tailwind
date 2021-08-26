@@ -116,8 +116,8 @@ export default function Home() {
   };
 
   return (
-    <div className='relative dark:bg-gray-900 transition duration-1000'>
-      <section className='flex flex-col  realtive min-h-screen py-2 md:max-w-3xl md:m-auto  '>
+    <div className='relative dark:bg-gray-900 transition duration-1000 '>
+      <section className='flex flex-col  realtive max-h-screen py-2 md:max-w-3xl md:m-auto  '>
         <Head>
           <title>Do it Today!</title>
           <link rel='icon' href='/favicon.ico' />
@@ -125,7 +125,7 @@ export default function Home() {
         <div className='flex items-center space-x-2 absolute top-3 left-2  '>
           <SunIcon className='w-4 text-gray-800 dark:text-gray-600 ' />
           <button
-            className='w-9 h-5 bg-gray-300 rounded-full flex items-center px-1 dark:bg-white '
+            className='w-9 h-5 bg-gray-300 rounded-full flex items-center px-1 dark:bg-white shadow-xl '
             onClick={swither}>
             <div id='switchTheme' className='swithDot'></div>
           </button>
@@ -186,6 +186,14 @@ export default function Home() {
           </form>
         )}
       </section>
+      <footer className='hidden absolute bottom-5 right-4 md:inline text-xs bg-gray-900 text-white dark:bg-white dark:text-black px-4 py-1 rounded-full shadow-2xl'>
+        <p >
+          created by{" "}
+          <a href='https://www.instagram.com/omar.code/' className='font-bold '>
+            @Omar.Code
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }
